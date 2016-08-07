@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.phalla.typingracer.R;
@@ -40,8 +41,9 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder> 
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public CheckBox checkModel;
+        public ImageView carModel;
 
-        public SharedPreferences sharedPreferences;
+        //public SharedPreferences sharedPreferences;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -51,13 +53,18 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder> 
             super(itemView);
 
             checkModel = (CheckBox) itemView.findViewById(R.id.modelID);
+            carModel = (ImageView) itemView.findViewById(R.id.carMod);
         }
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // Get the data model based on position
-        final CarModel models = mModels.get(position);
+        //final CarModel models = mModels.get(position);
+        CarModel car = mModels.get(position);
+
+        ImageView imageView = holder.carModel;
+        imageView.setImageResource(car.getCar());
 
         if(position == 0 && holder.checkModel.isChecked()){
             lastChecked = holder.checkModel;

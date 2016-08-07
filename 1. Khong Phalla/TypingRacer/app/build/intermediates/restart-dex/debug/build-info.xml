@@ -4,7 +4,7 @@
     api-level="18"
     density="xhdpi"
     format="7"
-    timestamp="4115126967619"
+    timestamp="19658858019207"
     token="2403785670705471197" >
 
     <task
@@ -21,13 +21,18 @@
         duration="0" />
 
     <artifact
-        location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\res\resources-debug.ap_"
+        type="RESOURCES" />
 
-    <build timestamp="4115126967619" >
+    <build timestamp="18993205010257" >
         <artifact
-            location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\outputs\apk\app-debug.apk"
-            type="MAIN" />
+            location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build timestamp="19658858019207" >
+        <artifact
+            location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

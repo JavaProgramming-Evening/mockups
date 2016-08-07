@@ -18,7 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText name;
-    public static final String PREFS_NAME = "Player";
+    private static final String PREFS_NAME = "Player";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

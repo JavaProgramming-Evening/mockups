@@ -10,17 +10,33 @@
     android:orientation="vertical"
     tools:context="com.example.phalla.typingracer.TypingActivity">
 
-    <ImageView
-        android:id="@+id/carDrive"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:src="@drawable/model_1"/>
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:0:0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/road_view"
+        android:paddingTop="35dp">
+
+        <ImageView
+            android:id="@+id/carDrive"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:src="@drawable/model_1"/>
+
+    </LinearLayout>
 
     <EditText
-        android:id="@+id/inputText"
+        android:id="@+id/pViewer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:inputType="textCapSentences"/>
+        android:maxLines="6"
+        android:clickable="false"
+        android:longClickable="false"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

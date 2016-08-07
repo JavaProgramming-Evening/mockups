@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class ModelActivity extends AppCompatActivity {
 
-    String[] model = {"model_1.png", "model_1.png", "model_1.png", "model_1.png", "model_1.png"};
+    String[] model = {"model_1", "model_2", "model_3", "model_4", "model_5"};
     int carPosition;
 
     @Override
@@ -29,7 +30,8 @@ public class ModelActivity extends AppCompatActivity {
         List<CarModel> carModelList = new ArrayList<>();
         CarModel carModel;
         for(int i = 0; i < model.length; i++) {
-            carModel = new CarModel(model[i]);
+            int idImage = getResources().getIdentifier("@drawable/" + model[i], null, getPackageName());
+            carModel = new CarModel(idImage);
             carModelList.add(carModel);
         }
 

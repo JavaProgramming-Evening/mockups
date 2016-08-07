@@ -4,17 +4,18 @@ package com.example.phalla.typingracer;
  * Created by Sony on 27/06/2016.
  */
 public class CarModel {
-    private String car;
+    private int carImage;
 
-    public CarModel(String car){
-        car = car;
+    public CarModel(int carImageUrl){
+        carImage = carImageUrl;
     }
 
-    public String getCar() {
-        return car;
+    public int getCar() {
+        return carImage;
     }
 
-    public void setCar(String car) {
-        this.car = car;
+    public void setCar(int carImageUrl) {
+        this.carImage = carImageUrl;
     }
+
 }
