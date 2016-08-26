@@ -24,9 +24,10 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder> 
 
     // Store a member variable for the contacts
     private List<CarModel> mModels;
-    private static CheckBox lastChecked = null;
+    private CheckBox lastChecked = null;
     private static int lastCheckedPos = 0;
     private ModelAdapterClickListener modelAdapterClickListener;
+    private CheckBox checkBox;
 
     // Pass in the contact array into the constructor
     public ModelAdapter(List<CarModel> models) {
@@ -59,12 +60,17 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+
         // Get the data model based on position
-        //final CarModel models = mModels.get(position);
         CarModel car = mModels.get(position);
 
         ImageView imageView = holder.carModel;
         imageView.setImageResource(car.getCar());
+
+        if( lastChecked == null ){
+            checkBox = holder.checkModel;
+            checkBox.setChecked(car.isSelected());
+        }
 
         if(position == 0 && holder.checkModel.isChecked()){
             lastChecked = holder.checkModel;
@@ -80,11 +86,6 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder> 
                     if(lastChecked != null){
                         lastChecked.setChecked(false);
                     }
-
-//                    SharedPreferences sharedPreferences = view.getContext().getSharedPreferences("Player",0);
-//                    SharedPreferences.Editor editor = sharedPreferences.edit();
-//                    editor.putInt("model", position);
-//                    editor.commit();
 
                     modelAdapterClickListener.onCarModelClick(position);
 

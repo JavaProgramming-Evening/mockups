@@ -148,12 +148,12 @@
         "source": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "D:\\Documents\\MITE-Lession\\MITE-Semester-2\\Advance_Java\\Asignment\\project\\TypingRacer\\app\\build\\intermediates\\res\\merged\\debug\\layout\\model_list.xml",

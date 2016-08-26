@@ -5,9 +5,11 @@ package com.example.phalla.typingracer;
  */
 public class CarModel {
     private int carImage;
+    private boolean isSelected;
 
-    public CarModel(int carImageUrl){
+    public CarModel(int carImageUrl, boolean carSelected){
         carImage = carImageUrl;
+        isSelected = carSelected;
     }
 
     public int getCar() {
@@ -18,4 +20,11 @@ public class CarModel {
         this.carImage = carImageUrl;
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 }

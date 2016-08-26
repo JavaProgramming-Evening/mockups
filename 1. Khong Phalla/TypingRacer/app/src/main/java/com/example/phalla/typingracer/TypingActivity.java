@@ -15,6 +15,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -33,13 +34,16 @@ public class TypingActivity extends AppCompatActivity {
 
     int carID = 0;
     EditText pContent;
-    int maxInput;
+    int maxInput = 0;
     int currentPosition = 0;
     String paragraphs = "";
     TextView clock;
-    int second = 0, minut = 0, hour = 0;
+    int second = 0;
     Timer timerTicker;
     ImageView carImage;
+    boolean disableChange = false;
+    String currentCharacter = "";
+    String characterCompare= "";
 
     String[] carModels = {"model_1", "model_2", "model_3", "model_4", "model_5"};
 
@@ -56,6 +60,7 @@ public class TypingActivity extends AppCompatActivity {
         carImage.setImageResource(idImage);
 
         clock = (TextView) findViewById(R.id.timer);
+
         // set text
         paragraphs = getParagraphs();
         maxInput = paragraphs.length();
@@ -64,46 +69,44 @@ public class TypingActivity extends AppCompatActivity {
         pContent.setText(paragraphs);
         pContent.setMovementMethod(new ScrollingMovementMethod());
         pContent.requestFocus();
-        pContent.setSelection(currentPosition+1);
+        pContent.setSelection(currentPosition);
 
-        pContent.setOnKeyListener(new View.OnKeyListener() {
+        pContent.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                String character = ((char) keyEvent.getUnicodeChar())+"";
-                String currentCharacter = paragraphs.substring(maxInput);
-                if ( currentPosition < maxInput  ){
-                    currentCharacter = paragraphs.substring(currentPosition, currentPosition + 1);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+
+        pContent.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(disableChange){ return; }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(disableChange){ return; }
+
+                characterCompare = charSequence.toString().substring(currentPosition, currentPosition + 1);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(disableChange){ return; }
+
+                disableChange = true;
+                pContent.setText(paragraphs);
+                pContent.setSelection(currentPosition);
+                currentCharacter = paragraphs.substring(currentPosition, currentPosition + 1);
+
+                if(currentPosition < maxInput && currentCharacter.equals(characterCompare) ){
+                    currentPosition++;
+                    pContent.setSelection(currentPosition);
+                    move();
                 }
-
-                if ( keyEvent.getAction() == KeyEvent.ACTION_DOWN ){
-                    if ( character.equals(currentCharacter) ){
-                        if ( currentPosition < maxInput  ){
-                            pContent.getText().delete(currentPosition, currentPosition + 1);
-                        }else{
-                            pContent.getText().delete(maxInput-1, maxInput);
-                        }
-
-                    }else{
-                        if ( currentPosition <= maxInput  ){
-                            return true;
-                        }
-                    }
-                }
-
-                if ( keyEvent.getAction() == KeyEvent.ACTION_UP ){
-                    if ( character.equals(currentCharacter) ){
-                        currentPosition++;
-                        move();
-
-                        if ( currentPosition < maxInput  ){
-                            pContent.setSelection(currentPosition+1);
-                        }else{
-                            pContent.setSelection(maxInput);
-                        }
-                    }
-                }
-
-                return false;
+                disableChange = false;
             }
         });
 
@@ -145,12 +148,12 @@ public class TypingActivity extends AppCompatActivity {
         timerTicker.cancel();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //builder.setMessage(carID + ": Please check your score");
         builder.setMessage("Check your result");
         builder.setPositiveButton("Result", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putExtra("numChar", maxInput);
                 intent.putExtra("time", clock.getText().toString());
                 startActivity(intent);
             }

@@ -19,6 +19,8 @@ public class ModelActivity extends AppCompatActivity {
 
     String[] model = {"model_1", "model_2", "model_3", "model_4", "model_5"};
     int carPosition;
+    ModelAdapter modelAdapter;
+    List<CarModel> carModelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +29,21 @@ public class ModelActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        List<CarModel> carModelList = new ArrayList<>();
         CarModel carModel;
         for(int i = 0; i < model.length; i++) {
             int idImage = getResources().getIdentifier("@drawable/" + model[i], null, getPackageName());
-            carModel = new CarModel(idImage);
+            boolean isSelected = false;
+            if(i==0){
+                isSelected = true;
+            }
+            carModel = new CarModel(idImage, isSelected);
             carModelList.add(carModel);
         }
 
-        ModelAdapter modelAdapter = new ModelAdapter(carModelList);
+        modelAdapter = new ModelAdapter(carModelList);
         recyclerView.setAdapter(modelAdapter);
+
+        //this.setCarSelected(0);
 
         modelAdapter.setModelAdapterClickListener(new ModelAdapterClickListener() {
             @Override
@@ -47,76 +54,16 @@ public class ModelActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-
-        /*recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                CarModel carModel1 = carModelList.get(position);
-
-                Toast.makeText(getApplicationContext(), carModel.getId() + " is selected", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));*/
     }
-
-   /* public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
-    public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
-
-        private GestureDetector gestureDetector;
-        private ModelActivity.ClickListener clickListener;
-
-        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ModelActivity.ClickListener clickListener) {
-            this.clickListener = clickListener;
-            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                    if (child != null && clickListener != null) {
-                        clickListener.onLongClick(child, recyclerView.getChildAdapterPosition(child));
-                    }
-                }
-            });
-        }
-
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            View child = rv.findChildViewUnder(e.getX(), e.getY());
-            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
-                clickListener.onClick(child, rv.getChildAdapterPosition(child));
-            }
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
-    }*/
 
     public void openTyping(View view){
-        //Toast.makeText((getApplicationContext()), name.getText().toString(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(), TypingActivity.class);
         intent.putExtra("car_position", carPosition);
         startActivity(intent);
     }
 
+    /*private void setCarSelected(int position){
+
+        modelAdapter.notifyDataSetChanged();
+    }*/
 }

@@ -30,15 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user touches the button */
     public void sendMessage(View view) {
-        // Restore preferences
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("name", name.getText().toString());
-        editor.commit();
+        if( (name.getText().toString().trim()).equals("") ){
+            name.setText("");
+            name.requestFocus();
+        } else {
+            // Restore preferences
+            SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("name", name.getText().toString());
+            editor.commit();
 
-        //Toast.makeText((getApplicationContext()), name.getText().toString(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), ModelActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ModelActivity.class);
+            startActivity(intent);
+        }
     }
 
 

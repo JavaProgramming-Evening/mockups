@@ -33,7 +33,7 @@ public class ResultActivity extends AppCompatActivity {
 
         playerName.setText(player);
         timeSpent.setText("Time spent : "+ (intent.getExtras().getString("time")));
-        typingStatus.setText("Typing : Poor");
+        typingStatus.setText("Number Charector : "+ (intent.getExtras().getInt("numChar")));
 
         buttonResetModel = (Button) findViewById(R.id.btnResetModel);
         buttonResetModel.setOnClickListener(onClick);
@@ -48,7 +48,7 @@ public class ResultActivity extends AppCompatActivity {
             Intent intent;
             switch (view.getId()){
                 case R.id.btnResetModel:
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent = new Intent(getApplicationContext(), ModelActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btnResetTyping:
