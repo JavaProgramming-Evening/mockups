@@ -1,0 +1,3 @@
+CHANGED,D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\phalla\typingracer\ModelAdapter$1$override.class
+CHANGED,D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\phalla\typingracer\ModelAdapter$override.class
+CHANGED,D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class

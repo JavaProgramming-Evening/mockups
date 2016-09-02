@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="18"
+    density="xhdpi"
+    format="7"
+    timestamp="5590775105774"
+    token="2403785670705471197" >
+
+    <task
+        name="javac"
+        duration="249" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="21" />
+    <task
+        name="verifier"
+        duration="4" />
+
+    <artifact
+        location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="5590775105774" >
+        <artifact
+            location="D:\Documents\MITE-Lession\MITE-Semester-2\Advance_Java\Asignment\project\TypingRacer\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>
